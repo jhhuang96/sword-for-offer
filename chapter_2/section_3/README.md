@@ -166,8 +166,8 @@ def buildTree(preorder, inorder):
     root_val = preorder[0]
     root = TreeNode(root_val)
     cut = inorder.index(root_val)
-    root.left = buildTree(preorder[1:cut+1], inorder[:cut])
-    root.right = buildTree(preorder[cut+1:], inorder[cut+1:])
+    root.left = self.buildTree(preorder[1:cut+1], inorder[:cut])
+    root.right = self.buildTree(preorder[cut+1:], inorder[cut+1:])
     return root
 ```
 方法二：空间复杂度更低的解法。
