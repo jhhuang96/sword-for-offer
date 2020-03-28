@@ -54,6 +54,8 @@ def convert(self, root):
     for f, s in zip(a, b):
         f.right = s
         s.left = f
+    head.right = s
+    s.left = head
     return ans
 ```
 
