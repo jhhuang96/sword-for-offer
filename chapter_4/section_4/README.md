@@ -48,15 +48,19 @@ def convert(self, root):
             yield from dfs(node.left)
             yield node
             yield from dfs(node.right)
-
-    a, b = tee(dfs(root))
-    ans = next(b, None)
+    nodelist = list(dfs(root))
+    # 当一个中间节点
+    dummy = Node(-1, None, None)
+    nodelist.insert(0, dummy)
+    a, b = tee(nodelist)
+    next(b)
     for f, s in zip(a, b):
         f.right = s
         s.left = f
-    head.right = s
-    s.left = head
-    return ans
+    # 将 dummy 删掉   
+    dummy.right.left = s
+    s.right = dummy.right
+    return dummy.right
 ```
 
 <font color=#32CD32 size=3>方法二：分别递归处理左子树和右子树。</font>
