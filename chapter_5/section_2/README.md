@@ -217,7 +217,8 @@ cmp(a, b)
 from functools import cmp_to_key
 def PrintMinNumber(self, numbers):
     nums = list(map(str, numbers))
-    nums.sort(key=cmp_to_key(lambda x, y: ((x+y)>(y+x)) - ((y+x)>(x+y))))
+    # nums.sort(key=cmp_to_key(lambda x, y: ((x+y)>(y+x)) - ((y+x)>(x+y))))
+    nums.sort(key=cmp_to_key(lambda x, y: int(x+y)-int(y+x)))
     return ''.join(nums)
 ```
 
